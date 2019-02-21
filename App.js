@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { Platform, StatusBar, StyleSheet, SafeAreaView, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 
@@ -32,6 +32,7 @@ export default class App extends React.Component {
       Asset.loadAsync([
         require('./assets/images/robot-dev.png'),
         require('./assets/images/robot-prod.png'),
+        require('./assets/images/truck.png')
       ]),
       Font.loadAsync({
         // This is the font that we are using for our tab bar
@@ -39,6 +40,9 @@ export default class App extends React.Component {
         // We include SpaceMono because we use it in HomeScreen.js. Feel free
         // to remove this if you are not using it in your app
         'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
+        'monserrat-bold': require('./assets/fonts/Montserrat-Bold.ttf'),
+        'monserrat-regular': require('./assets/fonts/Montserrat-Regular.ttf'),
+        'monserrat-italic': require('./assets/fonts/Montserrat-LightItalic.ttf')
       }),
     ]);
   };

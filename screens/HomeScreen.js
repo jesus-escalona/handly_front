@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  AsyncStorage
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
@@ -15,6 +16,11 @@ import { MonoText } from '../components/StyledText';
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
+  };
+
+  _signOutAsync = async () => {
+    await AsyncStorage.clear();
+    this.props.navigation.navigate('Auth');
   };
 
   render() {
@@ -35,7 +41,7 @@ export default class HomeScreen extends React.Component {
           <View style={styles.getStartedContainer}>
             {this._maybeRenderDevelopmentModeWarning()}
 
-            <Text style={styles.getStartedText}>Get started by opening</Text>
+            <Text onPress={this._signOutAsync} style={styles.getStartedText}>SignOut</Text>
 
             <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
               <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
